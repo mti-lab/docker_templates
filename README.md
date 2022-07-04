@@ -10,12 +10,18 @@
   - [x] NeuralRecon (Yamashita)
   - [ ] Atlas (Yamashita)
   - [x] VoRTX (Yamashita)
+  - [x] instantNGP (Yamashita)
   - [ ] NeRF (Kumagai)
   - [ ] Neus (Kumagai)
   - [ ] and more!
 
 ## 使用方法
-
+* Dockerで普通に使う場合
+  * 適当に調べてください
+* ABCI上で使いたい場合(Singularity)の例
+  1. ```docker build ~~~ && docker login && docker push 'user ID'/hoge-x.xx:latest```
+  2. ```module load singualitypro && singularity pull hoge.img docker://'user ID'/hoge-x.xx:latest```
+  3. ```singualrity run --nv hoge.img```
 
 ## よく使うリンク
 * [DockerHub](https://hub.docker.com/)
