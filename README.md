@@ -29,7 +29,10 @@
 * ABCI上で使いたい場合(Singularity)の例
   * dockerイメージのbuildとpush
     1. ```cd 'dockerfile-dir-path'```
-    2. ```docker build -m 8g -t hoge-x.xx:latest . && docker login && docker push 'user ID'/hoge-x.xx:latest```
+    2. ```docker build -m 16g -t 'user ID'/hoge-x.xx:latest . && docker login && docker push 'user ID'/hoge-x.xx:latest```
+    * --no-cacheオプションをつければキャッシュを参照せずにビルドできる
+      * 良い点：変なバグを引きにくいい
+      * 悪い点：ビルドに時間がかかる
   * ABCI上でのSingularityイメージの作成
     1. ```cd 'singularity-img-dir-path' ```
     2. ```module load singualitypro && singularity pull hoge.img docker://'user ID'/hoge-x.xx:latest```
@@ -38,14 +41,14 @@
       * ```singularity run --nv hoge.img```
       * singularity環境下に入るので自由に操作してください
         * 注1. ABCIのgroup領域のデータは```--bind```でマウントしないと参照できません(共有領域のデータセットを使うときなど)
-        * 注2. ```--nv```はGPU使わない時は外してください
+        * 注2. ```--nv```はGPU使わない時は外したほうがいいです
     * コマンドを投げる場合
       * ```singularity exec --nv hoge.img python run.py```
       * 例はsigularity環境下で```python run.py```を走らせる場合です
         * 注. ```python run.py```は必要な命令に書き換えてください
       * バッチジョブを投げる時はこちらの方が書きやすいのはと思います
 * Dockerイメージとして使う場合
-  * WIP
+  * インターネットに沢山解説があがっているので適宜参照してください
 
 ## よく使うリンク
 * [DockerHub](https://hub.docker.com/)
